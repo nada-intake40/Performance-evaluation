@@ -37,15 +37,11 @@ class  StoringRoleService
 
 
         $role = $this->repo->create(['name'=>$request['name'] ]);
-        // $role = 12;
         if($role){
             $permission = Permission::create(['name'=>$role->name]);
             if($permission){
                 if($request['permissions']){
-                    // return gettype($request['permissions']);
-                    foreach($request['permissions'] as $element){
-                        // DB::table('role_has_permissions')
-                        // ->create(['permission_id'=>$permission->id,'role_id'=>$element]);
+                    foreach($request['permissions'] as $element){                  
                         DB::insert('insert into role_has_permissions (permission_id, role_id) values (?, ?)',
                          [$permission->id, $element]);
                     }
