@@ -31,10 +31,12 @@ class RetrivingUsersBySupervisorService
      * @return array
      */
     public function execute($role)
-    {
-        $permission = Permission::where('name',$role);
-         $roles = DB::table('role_has_permissions')::where('permission_id',$permission->id)->get();
-         $users = $this->repo->getUsersByRole($roles);
+    { 
+        
+        $permission = Permission::where('name',$role)->first();
+        $roles = DB::table('role_has_permissions')->where('permission_id',$permission->id)->get();
+        $roles_grp= json_decode(json_encode($roles), true); 
+        $users = $this->repo->getUsersByRole($roles_grp);
         if($users){
             return $users;
         }

@@ -56,9 +56,9 @@ class UserController extends Controller
         return $service->execute($user,$request->validated());
 
     }
-    public function getUsers($role, $id, RetrivingUsersBySupervisorService $service)
+    public function getUsers($role, RetrivingUsersBySupervisorService $service)
     {
-        return $service->execute($role, $id);
+        return $service->execute($role);
 
     }
     public function trash(RetriveTrashedUsersService $service){

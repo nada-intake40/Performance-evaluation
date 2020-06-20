@@ -195,18 +195,17 @@ class BaseRepository
     public function getBySupervisorId($id){
         return $this->model->where('supervisor',$id)->get();
     }
-    public function getUsersByRole(array $roles_id){
-        // $roles = Role::whereIn('name',$roles)->get();
-        // $roles_id = [];
-        // foreach($roles as $role){
-        //     array_push($roles_id,$role->id);
-        // }
-
+    public function getUsersByRole(array $roles){
+        $roles_id = [];
+        foreach($roles as $role){
+            array_push($roles_id,$role['role_id']);
+        }
         $user_roles = DB::table('model_has_roles')->whereIn('role_id',$roles_id)->get();
         $users_id = [];
         foreach($user_roles as $user){
           array_push($users_id,$user->model_id);
       }
+
       $users = DB::table('users')->whereIn('id',$users_id)->get();
         return $users;
     }
