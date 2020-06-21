@@ -186,15 +186,23 @@ class BaseRepository
         ->where('cycle_id', $cycle_id)
         ->get();
     }
+
+
     public function getTrash(){
         return $this->model->onlyTrashed()->get();
     }
+
+
     public function restoreTrash($id){
         return $this->model->onlyTrashed()->find($id)->restore();
     }
+
+
     public function getBySupervisorId($id){
         return $this->model->where('supervisor',$id)->get();
     }
+
+                                                                                    
     public function getUsersByRole(array $roles){
         $roles_id = [];
         foreach($roles as $role){

@@ -30,9 +30,9 @@ class RoleController extends Controller
     {
         return $role;
     }
-    public function update(Role $role,StoringRoleRequest $request , UpdatingRoleService $service)
+    public function update( $id,StoringRoleRequest $request , UpdatingRoleService $service)
     {
-        return $service->execute($role,$request->validated());
+        return $service->execute($id,$request->validated());
 
     }
 }
