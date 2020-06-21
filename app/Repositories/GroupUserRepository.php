@@ -2,19 +2,19 @@
 
 namespace App\Repositories;
 
-use App\Models\GroupUser;
+use App\Models\GroupsUser;
 
 /**
  * Class CriteriaRepository
  * @package App\Repositories
  */
-class CriteriaRepository extends BaseRepository
+class GroupUserRepository extends BaseRepository
 {
     /**
      * CriteriaRepository constructor.
      * @param GroupUser $groupUser
      */
-    public function __construct(GroupUser $groupUser)
+    public function __construct(GroupsUser $groupUser)
     {
         parent::__construct($groupUser);
     }

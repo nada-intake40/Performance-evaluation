@@ -32,7 +32,7 @@ Route::middleware([ 'auth:sanctum','isAdmin'])->group(function () {
     //restore deleted user
     Route::get('/user/trash/{id}', 'UserController@restore');
     // create one user
-    Route::post('/user', 'UserController@store');
+    // Route::post('/user', 'UserController@store');
     // list single user
     // Route::get('/user/{user}', 'UserController@show');
     // edit user
@@ -128,6 +128,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
       Route::post('/evaluation', 'EvaluationController@store'); 
 
 });
+
+Route::post('/user', 'UserController@store');
 
 
 // user_indicators middleware
