@@ -62,7 +62,10 @@ class User extends Authenticatable
         }
         return false ;
     }
-
+    public function group()
+    {
+        return $this->belongsToMany('App\Models\Group');
+    }
 
 
 }

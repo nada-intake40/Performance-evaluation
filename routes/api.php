@@ -72,6 +72,8 @@ Route::middleware([ 'auth:sanctum','isAdmin'])->group(function () {
 
     Route::delete('/criteria/{id}', 'CriteriaController@destroy');
 
+    // indicators
+
     Route::get('/indicators', 'IndicatorController@index');
 
     Route::get('/indicators/trash', 'IndicatorController@trash');
@@ -85,6 +87,11 @@ Route::middleware([ 'auth:sanctum','isAdmin'])->group(function () {
     Route::put('/indicator/{id}', 'IndicatorController@update');
 
     Route::delete('/indicator/{id}', 'IndicatorController@destroy');
+
+    //Groups
+    Route::get('/groups', 'GroupController@index');
+    Route::post('/group', 'GroupController@store');
+
 
     Route::get('/evaluation/{id}', 'User_IndicatorController@getUserIndicators');
 
@@ -123,6 +130,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 Route::get('/users', 'UserController@index');
 Route::post('/role', 'RoleController@store');
 Route::get('/users/{role}', 'UserController@getUsers');
+Route::put('/role/{role}', 'RoleController@update');
+
 
 
 // user_indicators middleware
