@@ -13,10 +13,6 @@ class RoleController extends Controller
 {
     public function index(RetrievingAllRolesService $service, Request $request)
     {
-
-        // $posts=User::paginate(10);
-        // return  ResourcesUser::collection($posts);
-
            return  $service->execute();
     }
 

@@ -51,7 +51,7 @@ class UserController extends Controller
         return $service->execute($request->validated());
 
     }
-    public function update(User $user,UpdatingUserRequest $request , UpdatingUserService $service)
+    public function update(User $user, UpdatingUserRequest $request , UpdatingUserService $service)
     {
         return $service->execute($user,$request->validated());
 
