@@ -36,9 +36,9 @@ class  StoringRoleService
     {
 
 
-        $role = $this->repo->create(['name'=>$request['name'] ]);
+        $role = $this->repo->create(['name'=>$request['name'], 'guard_name'=>'web']);
         if($role){
-            $permission = Permission::create(['name'=>$role->name]);
+            $permission = Permission::create(['name'=>$role->name,'guard_name'=>'web']);
             if($permission){
                 if($request['permissions']){
                     foreach($request['permissions'] as $element){                  
