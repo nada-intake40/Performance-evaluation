@@ -25,7 +25,7 @@ class StoringRoleRequest extends FormRequest
     {
         return [
             'name'=>'required|min:2|max:25',
-            'permissions' => 'required',
+            'permissions' => 'nullable',
         ];
     }
 }
