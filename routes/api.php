@@ -14,25 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-
-// Route::get('/users/{role}/{id}', 'UserController@getUsers');
-
-
 Route::middleware([ 'auth:sanctum','isAdmin'])->group(function () {
 
 
-    //list users
-    // Route::get('/users', 'UserController@index');
+    
     //list trash
     Route::get('/users/trash', 'UserController@trash');
     //restore deleted user
     Route::get('/user/trash/{id}', 'UserController@restore');
     // create one user
-    // Route::post('/user', 'UserController@store');
+    Route::post('/user', 'UserController@store');
     // list single user
     // Route::get('/user/{user}', 'UserController@show');
     // edit user
@@ -42,18 +33,15 @@ Route::middleware([ 'auth:sanctum','isAdmin'])->group(function () {
     //list roles
     Route::get('/roles', 'RoleController@index');
     // create one role
-    // Route::post('/role', 'RoleController@store');
+    Route::post('/role', 'RoleController@store');
     // list single role
     Route::get('/role/{role}', 'RoleController@show');
     // edit role
     Route::put('/role/{role}', 'RoleController@update');
     //delete role
-    // Route::get('/evaluation_cycles', 'Evaluation_CycleController@index');
 
     Route::post('/evaluation_cycle', 'Evaluation_CycleController@store');
     
-    // Route::get('/evaluation_cycle/{id}', 'Evaluation_CycleController@show');
-
     Route::put('/evaluation_cycle/{id}', 'Evaluation_CycleController@update');
 
     Route::delete('/evaluation_cycle/{id}', 'Evaluation_CycleController@destroy');
@@ -129,7 +117,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 });
 
-Route::post('/user', 'UserController@store');
+
 Route::put('/user/{user}', 'UserController@update');
 Route::post('/criteria', 'CriteriaController@store');
 Route::get('/criteria/role/{evd}/{uid}/{gid}', 'CriteriaController@getByRole');
