@@ -19,7 +19,8 @@ class StoreCriteriaRequest extends FormRequest
         return [
             'name' => 'required|min:3|unique:criterias,name',
             'type_id' => 'required|integer',
-            'role' => 'required'
+            'role' => 'nullable',
+            'group_id' => 'required'
 
         ];
     }

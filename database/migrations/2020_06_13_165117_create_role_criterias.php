@@ -16,13 +16,14 @@ class CreateRoleCriterias extends Migration
         Schema::create('role_criterias', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('role_id')->nullable();
             $table->unsignedBigInteger('criteria_id');
 
             $table->foreign('role_id')
                 ->references('id')
                 ->on('roles')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+                ->nullable();
             $table->foreign('criteria_id')
                 ->references('id')
                 ->on('criterias')

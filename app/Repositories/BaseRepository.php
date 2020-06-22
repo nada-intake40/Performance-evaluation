@@ -93,7 +93,7 @@ class BaseRepository
 
     public function getAllById(int $id)
     {
-        return $this->model->where('role_id', $id)->get();
+        return $this->model->where('group_id', $id)->get();
     }
 
     /**

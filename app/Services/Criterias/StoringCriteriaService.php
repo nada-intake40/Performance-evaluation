@@ -40,9 +40,18 @@ class  StoringCriteriaService
 
         $criteria = $this->repo->create($request);
         if ($criteria) {
-            foreach ($request['role'] as $value){
-                 $arr = array("role_id"=>$value, "criteria_id"=>$criteria->id);
-             $criteriaRole = $roleRepo->create($arr);
+            foreach ($request['group_id'] as $value){
+                // return $value;
+                if ($request['role']){
+                    foreach($request['role'] as $ele){
+                        $arr = array("role_id"=>$ele, "group_id"=>$value, "criteria_id"=>$criteria->id);
+                        $criteriaRole = $roleRepo->create($arr);
+                    }
+                }
+                else{
+                    $arr = array("group_id"=>$value, "criteria_id"=>$criteria->id);
+                    $criteriaRole = $roleRepo->create($arr);
+                }
             }
             return response()->json($criteria);
         } else {

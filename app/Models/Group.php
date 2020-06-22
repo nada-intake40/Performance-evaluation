@@ -14,4 +14,9 @@ class Group extends Model
     {
         return $this->belongsToMany('App\Models\User');
     }
+    public function criteria()
+    {
+        return $this->belongsToMany('App\Models\Criteria');
+    
+    }
 }

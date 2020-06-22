@@ -26,4 +26,9 @@ class Criteria extends Model
         return $this->belongsTo('Spatie\Permission\Models\Role');
     
     }
+    public function group()
+    {
+        return $this->belongsToMany('App\Models\Group');
+    
+    }
 }

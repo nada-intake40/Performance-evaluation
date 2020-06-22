@@ -12,13 +12,12 @@ class CriteriaTypeSeeder extends Seeder
      */
     public function run()
     {
-        if(CriteriaType::whereIn('type', ['average','mathemtical','direct','average by team'])->exists())
+        if(CriteriaType::whereIn('type', ['average','mathemtical','direct'])->exists())
         {
 
         }else{
         CriteriaType::create(['type'=> 'direct']);
         CriteriaType::create(['type'=> 'average']);
-        CriteriaType::create(['type'=> 'average by team']);
         CriteriaType::create(['type'=> 'mathemtical']);
         }
     }
