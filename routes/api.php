@@ -130,6 +130,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 Route::post('/user', 'UserController@store');
+Route::put('/user/{user}', 'UserController@update');
+
 
 
 // user_indicators middleware

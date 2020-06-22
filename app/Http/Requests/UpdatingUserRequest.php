@@ -27,6 +27,7 @@ class UpdatingUserRequest extends FormRequest
                 
                 'supervisor'=>'integer|nullable',
                 'role_id'=>'integer',
+                'group_id'=>'nullable',
         ];
     }
 }
