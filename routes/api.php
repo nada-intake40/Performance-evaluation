@@ -42,7 +42,7 @@ Route::middleware([ 'auth:sanctum','isAdmin'])->group(function () {
     //list roles
     Route::get('/roles', 'RoleController@index');
     // create one role
-    // Route::post('/role', 'RoleController@store');
+    Route::post('/role', 'RoleController@store');
     // list single role
     Route::get('/role/{role}', 'RoleController@show');
     // edit role
