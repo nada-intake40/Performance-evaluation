@@ -36,30 +36,30 @@ class StoringUserService
      */
     public function execute(array $request)
     {
-        if($request['avatar']){
-            $file = $request['avatar'];
-            $name = $file->getClientOriginalName();
-            $file->move('images' , $name);
-            $request['avatar']=$name;
-        }
+        // if($request['avatar']){
+        //     $file = $request['avatar'];
+        //     $name = $file->getClientOriginalName();
+        //     $file->move('images' , $name);
+        //     $request['avatar']=$name;
+        // }
 
-        $user = $this->repo->create($request);
-        if($user){
-            $role= Role::find($request['role_id']);
-            $user->assignRole($role);
+        // $user = $this->repo->create($request);
+        // if($user){
+        //     $role= Role::find($request['role_id']);
+        //     $user->assignRole($role);
 
             if($request['group_id']){
                 $grpUser= new GroupsUser() ;
                 $grpUserRep = new GroupUserRepository($grpUser);
                 $groups= json_decode(json_encode($request['group_id']), true);
-                foreach ($groups as $value) {
-                   $grpUserRep->create(['group_id'=>$value , 'user_id'=>$user->id]);
-                }
+                // foreach ($groups as $value) {
+                //    $grpUserRep->create(['group_id'=>$value , 'user_id'=>$user->id]);
+                // }
             }
 
-            return  response()->json($user);
-        }
-        return false;
+            return  response()->json($groups);
+        // }
+        // return false;
 
     }
 
