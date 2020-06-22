@@ -5,6 +5,8 @@ namespace App\Services\Role_Criterias;
 use App\Models\User;
 use App\Repositories\RoleCriteriaRepository;
 use App\Models\Criteria;
+use Illuminate\Support\Facades\DB;
+
 
 
 class RetrivingRoleCriteriasService
@@ -27,27 +29,28 @@ class RetrivingRoleCriteriasService
      *
      * @return array
      */
-    public function execute($roleId, $userId)
+    public function execute($evaluatorId, $userId, $grpId)
     {
-        // if($this->repo->getAllById($roleId) != null&&$this->repo->count()>0){
-
 
             $criteriasId = [];
             $user = User::find($userId);
-            $roleCriterias = $this->repo->getAllById($roleId);
+
+            $user_role = DB::table('model_has_roles')->where('model_id',$userId)->get();
+
+            // to get all criterias for specific group
+            $roleCriterias = $this->repo->getAllById($grpId);
             foreach ($roleCriterias as $value){
+                if($value->role_id == null || $value->role_id == $user_role[0]->role_id){
                 array_push($criteriasId,$value->criteria_id);
+                }
             }
-            if(($user->hasRole('Manager')) || ($user->hasRole('Senior Developer'))){
+            if($user->supervisor == $evaluatorId ){
                 $criterias = Criteria::whereIn('id',$criteriasId)->where('type_id',1)->get();
             }
-            elseif($user->hasRole('ProductOwner')){ 
-                $criterias = Criteria::whereIn('id',$criteriasId)->where('type_id',2)->get();
-            } else{ 
-                $criterias = Criteria::whereIn('id',$criteriasId)->whereIn('type_id',[2,3])->get();
+            else{
+                $criterias = Criteria::whereIn('id',$criteriasId)->where('type_id',2)->get();           
             }
-
-            
+           
             return $criterias;
         // }
         // else
