@@ -107,7 +107,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
       Route::post('/evaluation', 'EvaluationController@store');
 
-      Route::get('/users/{role}', 'UserController@getUsers');
+    //   Route::get('/users/{role}', 'UserController@getUsers');
 
       Route::get('/criteria/role/{id}/{rid}', 'CriteriaController@getByRole');
      
@@ -117,13 +117,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 });
 
-
-Route::put('/user/{user}', 'UserController@update');
-Route::post('/criteria', 'CriteriaController@store');
-// Route::get('/criteria/role/{evd}/{uid}', 'CriteriaController@getByRole');
-
-
-
+Route::get('/users/{role}', 'UserController@getUsers');
 
 // user_indicators middleware
 // Route::post('/evaluations', 'User_IndicatorController@create');

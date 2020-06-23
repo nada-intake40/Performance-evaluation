@@ -24,9 +24,8 @@ class UserController extends Controller
     public function index( RetrievingAllUsersService $service, Request $request)
     {
 
-
         $output= $service->execute();
-           return  ResourcesUser::collection($output);
+        return  ResourcesUser::collection($output);
     }
 
     public function show(User $user)
@@ -56,18 +55,24 @@ class UserController extends Controller
         return $service->execute($user,$request->validated());
 
     }
+
     public function getUsers($role, RetrivingUsersBySupervisorService $service)
     {
-        return $service->execute($role);
+        $output =  $service->execute($role);
+        return ResourcesUser::collection($output);
 
     }
-    public function trash(RetriveTrashedUsersService $service){
+    
+    public function trash(RetriveTrashedUsersService $service)
+    {
+
         $output= $service->execute();
         return  ResourcesUser::collection($output);
-        // return $service->execute();
-
+       
     }
-    public function restore( $id , RestoreTrashedUserService $service){
+
+    public function restore( $id , RestoreTrashedUserService $service)
+    {
         
         return $service->execute($id);
 

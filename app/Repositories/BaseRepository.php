@@ -214,8 +214,9 @@ class BaseRepository
           array_push($users_id,$user->model_id);
       }
 
-      $users = DB::table('users')->whereIn('id',$users_id)->get();
-        return $users;
+      $users = $this->model->whereIn('id',$users_id)->get();
+    //   DB::table('users')->whereIn('id',$users_id)->get();
+      return $users;
     }
    
 }
