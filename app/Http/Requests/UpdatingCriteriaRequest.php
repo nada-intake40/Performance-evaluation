@@ -20,6 +20,8 @@ class UpdatingCriteriaRequest extends FormRequest
         return [
             'name' => 'required|min:3',
             'type_id' => 'required|integer',
+            'roles' => 'nullable',
+            'group_id' => 'nullable'
         ];
     }
 

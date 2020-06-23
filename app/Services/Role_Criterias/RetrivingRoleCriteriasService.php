@@ -38,7 +38,7 @@ class RetrivingRoleCriteriasService
             $grps_id_user = DB::table('groups_users')->where('user_id',$userId)->pluck('group_id');
             // to get all criterias for specific group
             $grp_id_evaluator = DB::table('groups_users')->where('user_id',$evaluatorId)
-            ->whereIn('group_id',$grps_id_user, )->pluck('group_id');
+            ->whereIn('group_id',$grps_id_user)->pluck('group_id');
 
             foreach($grp_id_evaluator as $grpId){
             $roleCriterias = $this->repo->getAllById($grpId);

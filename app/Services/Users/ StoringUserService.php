@@ -55,11 +55,11 @@ class StoringUserService
                 }
             }
 
-            return  response()->json($user);
-        }
-        return false;
+            return  response()->json($groups);
+        // }
+        // return false;
 
     }
 
-
+    }
 }
