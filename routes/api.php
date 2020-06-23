@@ -132,7 +132,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 Route::post('/user', 'UserController@store');
 Route::put('/user/{user}', 'UserController@update');
 Route::post('/criteria', 'CriteriaController@store');
-Route::get('/criteria/role/{evd}/{uid}/{gid}', 'CriteriaController@getByRole');
+Route::get('/criteria/role/{evd}/{uid}', 'CriteriaController@getByRole');
 
 
 
