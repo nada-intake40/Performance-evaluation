@@ -40,8 +40,8 @@ class  StoringCriteriaService
 
         $criteria = $this->repo->create($request);
         if ($criteria) {
+        $criteria_id = $criteria->id;
             foreach ($request['group_id'] as $value){
-                // return $value;
                 if ($request['role']){
                     foreach($request['role'] as $ele){
                         $arr = array("role_id"=>$ele, "group_id"=>$value, "criteria_id"=>$criteria->id);
@@ -62,5 +62,22 @@ class  StoringCriteriaService
 
         return false;
     }
+
+    // public function storeRoleCriteriaGroup($request, $criteria_id){
+    //     $model = new RoleCriteria();
+    //     $roleRepo = new RoleCriteriaRepository($model);
+    //     foreach ($request['group_id'] as $value){
+    //         if ($request['role']){
+    //             foreach($request['role'] as $ele){
+    //                 $arr = array("role_id"=>$ele, "group_id"=>$value, "criteria_id"=>$criteria_id);
+    //                 $criteriaRole = $roleRepo->create($arr);
+    //             }
+    //         }
+    //         else{
+    //             $arr = array("group_id"=>$value, "criteria_id"=>$criteria_id);
+    //             $criteriaRole = $roleRepo->create($arr);
+    //         }
+    //     }
+    // }
 
 }

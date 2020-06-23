@@ -56,7 +56,7 @@ Route::middleware([ 'auth:sanctum','isAdmin'])->group(function () {
 
     Route::get('/criteria/{id}', 'CriteriaController@show');
 
-    Route::put('/criteria/{id}', 'CriteriaController@update');
+    // Route::put('/criteria/{id}', 'CriteriaController@update');
 
     Route::delete('/criteria/{id}', 'CriteriaController@destroy');
 
@@ -107,7 +107,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
       Route::post('/evaluation', 'EvaluationController@store');
 
-    //   Route::get('/users/{role}', 'UserController@getUsers');
+      Route::get('/users/{role}', 'UserController@getUsers');
 
       Route::get('/criteria/role/{id}/{rid}', 'CriteriaController@getByRole');
      
@@ -117,7 +117,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 });
 
-Route::get('/users/{role}', 'UserController@getUsers');
+// Route::get('/users/{role}', 'UserController@getUsers');
 
 // user_indicators middleware
 // Route::post('/evaluations', 'User_IndicatorController@create');
