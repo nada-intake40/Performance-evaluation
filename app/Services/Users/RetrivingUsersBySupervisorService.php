@@ -36,9 +36,9 @@ class RetrivingUsersBySupervisorService
         $permission = Permission::where('name',$role)->first();
         $roles = DB::table('role_has_permissions')->where('permission_id',$permission->id)->get();
         $roles_grp= json_decode(json_encode($roles), true); 
-        $user_groups = DB::table('groups_users')->where('user_id',$user_id)->get();
-        return $user_groups;
-        $users = $this->repo->getUsersByRole($roles_grp);
+        $user_group = DB::table('groups_users')->where('user_id',$user_id)->pluck('group_id');
+        $user_groups= json_decode(json_encode($user_group), true); 
+        $users = $this->repo->getUsersByRole($roles_grp,$user_groups);
         if($users){
             return $users;
         }

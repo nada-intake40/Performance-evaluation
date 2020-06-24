@@ -18,7 +18,7 @@ class UpdatingIndicatorRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3',
-            'permissions' => 'required',
+            'permissions' => 'nullable',
             
 
         ];

@@ -203,7 +203,7 @@ class BaseRepository
     }
 
                                                                                     
-    public function getUsersByRole(array $roles){
+    public function getUsersByRole(array $roles , array $user_groups){
         $roles_id = [];
         foreach($roles as $role){
             array_push($roles_id,$role['role_id']);
@@ -213,8 +213,9 @@ class BaseRepository
         foreach($user_roles as $user){
           array_push($users_id,$user->model_id);
       }
-
-      $users = $this->model->whereIn('id',$users_id)->get();
+      $final_users_id = DB::table('groups_users')->whereIn('group_id',$user_groups)
+      ->whereIn('user_id',$users_id)->pluck('user_id');
+      $users = $this->model->whereIn('id',$final_users_id)->get();
       return $users;
     }
    

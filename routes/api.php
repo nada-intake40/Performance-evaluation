@@ -117,6 +117,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 });
 
+
 // Route::get('/users/{role}', 'UserController@getUsers');
 
 // user_indicators middleware
