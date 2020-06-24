@@ -25,7 +25,7 @@ class User extends JsonResource
             'updated_at' => $this->updated_at,
             'role' => $this->roles ->pluck('name')->first(),
             'deleted_at'=>$this->deleted_at,
-            
+            'groups' => $this->group()->pluck('name'),
         ];
     }
 }

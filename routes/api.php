@@ -107,7 +107,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
       Route::post('/evaluation', 'EvaluationController@store');
 
-      Route::get('/users/{role}', 'UserController@getUsers');
+      Route::get('/users/{role}/{id}', 'UserController@getUsers');
 
       Route::get('/criteria/role/{id}/{rid}', 'CriteriaController@getByRole');
      

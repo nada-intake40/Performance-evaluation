@@ -56,9 +56,9 @@ class UserController extends Controller
 
     }
 
-    public function getUsers($role, RetrivingUsersBySupervisorService $service)
+    public function getUsers($role,$id, RetrivingUsersBySupervisorService $service)
     {
-        $output =  $service->execute($role);
+        $output =  $service->execute($role,$id);
         return ResourcesUser::collection($output);
 
     }
