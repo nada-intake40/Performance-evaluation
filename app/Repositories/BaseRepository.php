@@ -215,7 +215,6 @@ class BaseRepository
       }
 
       $users = $this->model->whereIn('id',$users_id)->get();
-    //   DB::table('users')->whereIn('id',$users_id)->get();
       return $users;
     }
    
