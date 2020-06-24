@@ -33,6 +33,8 @@ class UserController extends Controller
     
         $role= $user->roles()->pluck('id')->first();
         $user['role'] = $role ;
+        $groups = $user->group()->pluck('group_id'); 
+        $user['groups'] = $groups;
         return $user ;
     
     }
