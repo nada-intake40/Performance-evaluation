@@ -13,13 +13,16 @@ use App\Services\Role_Criterias\RetrivingRoleCriteriasService;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCriteriaRequest;
 use App\Http\Requests\UpdatingCriteriaRequest;
+use App\Http\Resources\Criteria as ResourcesCriteria;
 
 
 class CriteriaController extends Controller
 {
     public function index(RetrievingAllCriteriasService $service, Request $request)
-    {
-        return  $service->execute();
+    {   
+        // return  $service->execute();
+        $output= $service->execute();
+        return  ResourcesCriteria::collection($output);
     }
 
     public function store(StoreCriteriaRequest $request ,StoringCriteriaService $service)

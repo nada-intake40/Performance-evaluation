@@ -23,12 +23,12 @@ class Criteria extends Model
 
     public function role()
     {
-        return $this->belongsTo('Spatie\Permission\Models\Role');
+        return $this->belongsToMany('Spatie\Permission\Models\Role','role_criterias');
     
     }
     public function group()
     {
-        return $this->belongsToMany('App\Models\Group');
+        return $this->belongsToMany('App\Models\Group','role_criterias');
     
     }
 }
