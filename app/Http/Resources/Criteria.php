@@ -18,8 +18,8 @@ class Criteria extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
              'type_id' =>$this->type_id,
-             'roles' => $this->role()->pluck('name'),
-             'group_id' =>$this->group()->pluck('name'),
+             'roles' => $this->role()->pluck('role_id'),
+             'group_id' =>$this->group()->pluck('group_id'),
         ];
     }
 }
