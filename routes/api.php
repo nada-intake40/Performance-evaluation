@@ -56,7 +56,7 @@ Route::middleware([ 'auth:sanctum','isAdmin'])->group(function () {
 
     Route::get('/criteria/{id}', 'CriteriaController@show');
 
-    // Route::put('/criteria/{id}', 'CriteriaController@update');
+    Route::put('/criteria/{id}', 'CriteriaController@update');
 
     Route::delete('/criteria/{id}', 'CriteriaController@destroy');
 
