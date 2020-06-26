@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/role/{role}', 'RoleController@show');
+
+
 Route::middleware([ 'auth:sanctum','isAdmin'])->group(function () {
 
 
@@ -35,7 +38,7 @@ Route::middleware([ 'auth:sanctum','isAdmin'])->group(function () {
     // create one role
     Route::post('/role', 'RoleController@store');
     // list single role
-    Route::get('/role/{role}', 'RoleController@show');
+    // Route::get('/role/{role}', 'RoleController@show');
     // edit role
     Route::put('/role/{role}', 'RoleController@update');
     //delete role
